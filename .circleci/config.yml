@@ -1,0 +1,63 @@
+version: 2.1
+
+orbs:
+  aws-ecr: circleci/aws-ecr@8.1.2
+  aws-ecs: circleci/aws-ecs@2.2.1
+
+jobs:
+  preprod-create-and-push-docker-image-to-ecr:
+    docker:
+      - image: cimg/node:18.0.0
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.14
+      - aws-ecr/build-and-push-image:
+          registry-id: ECR_REGISTRY_ID
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          repo: trado-api
+          dockerfile: Dockerfile
+          path: .
+          region: ${AWS_DEFAULT_REGION}
+          tag: 'latest,${CIRCLE_SHA1}'
+  create-and-push-docker-image-to-ecr:
+    docker:
+      - image: cimg/node:18.0.0
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.14
+      - aws-ecr/build-and-push-image:
+          registry-id: ECR_REGISTRY_ID
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          repo: trado-api
+          dockerfile: Dockerfile
+          path: .
+          region: ${AWS_DEFAULT_REGION}
+          tag: 'latest,${CIRCLE_SHA1}'
+workflows:
+  deploy:
+    jobs:
+      - create-and-push-docker-image-to-ecr:
+          context: trado-common
+          filters:
+            # ignore any commit on any branch by default
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          context: trado-common
+          filters:
+            # ignore any commit on any branch by default
+            branches:
+              ignore: /.*/
+            # only act on version tags
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
+          requires:
+            - create-and-push-docker-image-to-ecr # only run this job once aws-ecr/build-and-push-image has completed
+          family: 'trado-api-task' #Task Name
+          service-name: 'trado-api-service'
+          cluster-name: 'trado'
+          container-image-name-updates: 'container=trado-api,tag=${CIRCLE_SHA1}'

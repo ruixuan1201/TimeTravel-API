@@ -1,0 +1,3545 @@
+{
+	"info": {
+		"_postman_id": "88bdc7a0-53f5-44b4-a6df-72a623f41a23",
+		"name": "Kilwar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "loginOtpSend",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\": \"+176051519881\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/auth/login/otp",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"auth",
+										"login",
+										"otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loginWithOtp",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"640242a5c5f2d86a4e484dcd\",\r\n    \"otp\": \"112233\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/auth/login/verify",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"auth",
+										"login",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loginWithRegister",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"640242aac5f2d86a4e484dd1\",\r\n    \"email\": \"sergej@kilwar.com\",\r\n    \"firstName\": \"Sergej\",\r\n    \"lastName\": \"Melihov_\",\r\n    \"terms\": {\r\n        \"termsAccepted\": true,\r\n        \"acceptedSmsCommunication\": true\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/auth/login/register",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"auth",
+										"login",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refreshToken",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDI0MmFhYzVmMmQ4NmE0ZTQ4NGRkMSIsImlhdCI6MTY3Nzg2OTc1NSwiZXhwIjoxNjc3OTU2MTU1fQ.TmzoSkoPMFN3OQt6uXVOazNqwdXuDrj1OUiDrF40LKs\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/auth/refreshToken",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"auth",
+										"refreshToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkAccessToken",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzE1YmViMGMyYzY2Y2M5ZTU4ZDE0YiIsImlhdCI6MTY3MzYzMTUyMCwiZXhwIjoxNjczNzE3OTIwfQ.0FOQ7zIYssdUZiqzfAVxNuAY9_FxZU7_c7rUMeVuPf8; Max-Age=86400; Path=/; Expires=Sat, 14 Jan 2023 17:38:40 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/api/v1/customer/auth/check/accessToken",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"auth",
+										"check",
+										"accessToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkRefreshToken",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzE1YmViMGMyYzY2Y2M5ZTU4ZDE0YiIsImlhdCI6MTY3MzYzMTUyMCwiZXhwIjoxNjczNzE3OTIwfQ.0FOQ7zIYssdUZiqzfAVxNuAY9_FxZU7_c7rUMeVuPf8; Max-Age=86400; Path=/; Expires=Sat, 14 Jan 2023 17:38:40 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDE0MDk4ZmQwMjJjYzQ4MzI5ZjVlOCIsImlhdCI6MTY3NzgwNDM0MywiZXhwIjoxNjc3ODkwNzQzfQ.DQszhLPLD4fPEUJt8ANKydXrwTjmEH4pSYj6anCZcfY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/auth/check/refreshToken",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"auth",
+										"check",
+										"refreshToken"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Package",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"length\": \"14\",\r\n    \"width\": \"13\",\r\n    \"height\": \"11\",\r\n    \"dimensionUnit\": \"METER\",\r\n    \"flatRateTemplate\": \"FedEx_Box_10kg\",\r\n    \"weight\": \"15\",\r\n    \"weightUnit\": \"KILO\",\r\n    \"quantity\": \"5\",\r\n    \"value\": \"11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/package/create",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"package",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/customer/package/640243c8b7a1ff1e264fbc37",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"package",
+										"640243c8b7a1ff1e264fbc37"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/customer/package/list?page=1&limit=10",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"package",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatePackage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\": 13,\r\n    \"additionalInfo\": \"Package Information\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/package/update/640243c8b7a1ff1e264fbc37",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"package",
+										"update",
+										"640243c8b7a1ff1e264fbc37"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "getUser",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/profile/get",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"profile",
+										"get"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"firstName\": \"Volodymyr\",\r\n  \"lastName\": \"Slepnov\",\r\n  \"middleName\": \"Dmitry\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/profile/update",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"profile",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "paymentSetupIntent",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/profile/payment/setupIntent",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"profile",
+										"payment",
+										"setupIntent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "isSetupPaymentMethod",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/profile/payment/check",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"profile",
+										"payment",
+										"check"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCards",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/profile/payment/card",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"profile",
+										"payment",
+										"card"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "saveFCMToken",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FCMToken\":\"eqCqv1aMnBRilEiRjlMV_q:APA91bGvDS6bC38Lt4lL21v8RJlNzVxziYvBjHeowRTyd66XENMQcq-WG7WIFK_nZjQmbaX60oqqMVfbAu15Y7UHiNxOp5KowYp4GTgH7KNhRwdN5hHCMqyBva7YO49pzTQpiER2gemB\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/profile/fcm_token/save",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"profile",
+										"fcm_token",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadAvatar",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Windows/Web/Wallpaper/Theme2/img7.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/profile/avatar",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"profile",
+										"avatar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Quote",
+					"item": [
+						{
+							"name": "get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/quote/63d1e30cb759800887d31dd9",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"quote",
+										"63d1e30cb759800887d31dd9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Shipment",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\": [\r\n        \"63d1e1c3e75d50982773ba86\"\r\n    ],\r\n    \"shipmentType\": \"ECONOMY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/create",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllNotification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/notifications/list?page=1&limit=5",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"notifications",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dispatch",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2U4YmMwZjExNjhhYjBhYzM4YjBjYSIsImlhdCI6MTY3NDQ4MTA5OCwiZXhwIjoxNjc0NTY3NDk4fQ.GlwWVVsFeofR-62IRv1bOwwqJMMitvX-mY3h1PM-RPI; Max-Age=86400; Path=/; Expires=Tue, 24 Jan 2023 13:38:18 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/dispatch",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"dispatch"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressTo\": \"63e20b009e64ffd3765a043a\",\r\n    \"shipmentType\": \"ECONOMY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/update/6409f4e26476aee1d26e7b0b",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"update",
+										"6409f4e26476aee1d26e7b0b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"value\": 5,\r\n    \"comment\": \"comment comment comment comment comment comment comment comment\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/rate/63e20acd9e64ffd3765a0365",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"rate",
+										"63e20acd9e64ffd3765a0365"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tip",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tip\": 5\r\n}\r\n    ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/tip/63e20acd9e64ffd3765a0365",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"tip",
+										"63e20acd9e64ffd3765a0365"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": [
+												"/C:/Windows/Web/Wallpaper/Theme2/img7.jpg",
+												"/C:/Windows/Web/Wallpaper/Theme2/img8.jpg",
+												"/C:/Windows/Web/Wallpaper/Theme2/img9.jpg"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/uploadImage/6402afe3bea90f0d11f7c58a",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"uploadImage",
+										"6402afe3bea90f0d11f7c58a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/deleteImage/6402afe3bea90f0d11f7c58a/640f5166e55d82ac02c0c113",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"deleteImage",
+										"6402afe3bea90f0d11f7c58a",
+										"640f5166e55d82ac02c0c113"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/list",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "locationHistory",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/locationHistory/6402a6bb97008e659c4c2643",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"locationHistory",
+										"6402a6bb97008e659c4c2643"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "currentLocation",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/currentLocation/6402a6bb97008e659c4c2643",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"currentLocation",
+										"6402a6bb97008e659c4c2643"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "quotes",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/6402a6bb97008e659c4c2643/quotes/11",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"6402a6bb97008e659c4c2643",
+										"quotes",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/shipment/6409f4e26476aee1d26e7b0b",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"shipment",
+										"6409f4e26476aee1d26e7b0b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Address",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"street1\": \"East Belmont Avenue\",\r\n    \"street2\": \"5684\",\r\n    \"city\": \"Fresno\",\r\n    \"zip\": \"93727\",\r\n    \"state\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"isResidential\": true,\r\n    \"validate\": true,\r\n    \"longitude\": -119.852428,\r\n    \"latitude\": 36.735088\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/address/create",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"address",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/address/63d1dddc5a690786d5bcc2de",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"address",
+										"63d1dddc5a690786d5bcc2de"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAll",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/address/list?page=1&limit=10",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"address",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editAddresss",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"additionalInfo\": \"additionalInfo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/address/edit/640fce14f608670b2c25dd08",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"address",
+										"edit",
+										"640fce14f608670b2c25dd08"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "validate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"additionalInfo\": \"additionalInfo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/address/63d1dddc5a690786d5bcc2de/validate",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"address",
+										"63d1dddc5a690786d5bcc2de",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Chat",
+					"item": [
+						{
+							"name": "saveChat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"shipmentId\": \"63e55899328eac2ac2ceeb22\",\r\n    \"recipientType\": \"shipper\",\r\n    \"message\": \"hello how are you?\",\r\n    \"channel\": \"63e55899328eac2ac2ceeb22_driver\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/chat/save",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"chat",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getChatHistory",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"shipmentId\": \"63e55899328eac2ac2ceeb22\",\r\n    \"recipientType\": \"support\",\r\n    \"message\": \"hello how are you?\",\r\n    \"channel\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/customer/chat/list?page=1&limit=5&order=timestamp&channel=63e55899328eac2ac2ceeb22_driver",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"chat",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "order",
+											"value": "timestamp"
+										},
+										{
+											"key": "channel",
+											"value": "63e55899328eac2ac2ceeb22_driver"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shipper",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "loginOtpSend",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\": \"+176051511\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/auth/login/otp",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"auth",
+										"login",
+										"otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loginWithOtp",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"6400f4829d90e2bab1711eaa\",\r\n    \"otp\": \"112233\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/auth/login/verify",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"auth",
+										"login",
+										"verify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loginWithRegister",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"id\":\"640547bb91977b3e81ae9a2b\",\r\n    \"firstName\": \"Driver\",\r\n    \"lastName\": \"for test\",\r\n    \"email\": \"email2@email.com\",\r\n    \"phone\": \"+176051513\",\r\n    \"address\": \"63d1de155a690786d5bcc2e5\",\r\n    \"profileImage\": \"profileImage\",    \r\n    \"birthDate\": \"birthDate\",\r\n    \"geoFenceCollectionName\": \"geoFenceCollectionName\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/auth/login/register",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"auth",
+										"login",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refreshToken",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZDQxNWYyOWM2N2E4YmRiNjZiYjU3NiIsImlhdCI6MTY3Nzc4NDcxMywiZXhwIjoxNjc3ODcxMTEzfQ.vrR003xo-PHK_Msg6FTJJk9dtu00E0tRzkRy-zwsf3w\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/auth/refreshToken",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"auth",
+										"refreshToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkRefreshToken",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzE1YmViMGMyYzY2Y2M5ZTU4ZDE0YiIsImlhdCI6MTY3MzYzMTUyMCwiZXhwIjoxNjczNzE3OTIwfQ.0FOQ7zIYssdUZiqzfAVxNuAY9_FxZU7_c7rUMeVuPf8; Max-Age=86400; Path=/; Expires=Sat, 14 Jan 2023 17:38:40 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDE0MDk4ZmQwMjJjYzQ4MzI5ZjVlOCIsImlhdCI6MTY3NzgwNDM0MywiZXhwIjoxNjc3ODkwNzQzfQ.DQszhLPLD4fPEUJt8ANKydXrwTjmEH4pSYj6anCZcfY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/auth/check/refreshToken",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"auth",
+										"check",
+										"refreshToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkAccessToken",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzE1YmViMGMyYzY2Y2M5ZTU4ZDE0YiIsImlhdCI6MTY3MzYzMTUyMCwiZXhwIjoxNjczNzE3OTIwfQ.0FOQ7zIYssdUZiqzfAVxNuAY9_FxZU7_c7rUMeVuPf8; Max-Age=86400; Path=/; Expires=Sat, 14 Jan 2023 17:38:40 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/auth/check/accessToken",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"auth",
+										"check",
+										"accessToken"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": \"63d1dfba5a690786d5bcc2fd\"   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/update",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "saveLastKnownLocation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"latitude\": 36.73151,\r\n    \"longitude\": -119.790962\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/saveLastKnownLocation",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"saveLastKnownLocation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\": \"63d1dfba5a690786d5bcc2fd\"   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/update",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "active",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/active",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"active"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createPreferences",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"city\": \"woodland\",\r\n    \"nearBy\": false,\r\n    \"distance\": \"<25 miles\",\r\n    \"isFullTime\": false,\r\n    \"preferredShipmentType\": [\r\n        \"ECONOMY\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/preference",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"preference"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatePreferences",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nearBy\": false,\r\n    \"isFullTime\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/preference",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"preference"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAccountLink",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/connectLink",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"connectLink"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "saveFCMToken",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FCMToken\":\"eqCqv1aMnBRilEiRjlMV_q:APA91bGvDS6bC38Lt4lL21v8RJlNzVxziYvBjHeowRTyd66XENMQcq-WG7WIFK_nZjQmbaX60oqqMVfbAu15Y7UHiNxOp5KowYp4GTgH7KNhRwdN5hHCMqyBva7YO49pzTQpiER2gemB\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/profile/fcm_token/save",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"profile",
+										"fcm_token",
+										"save"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Shipment",
+					"item": [
+						{
+							"name": "accept",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2U4YmMwZjExNjhhYjBhYzM4YjBjYSIsImlhdCI6MTY3NDQ4MTA5OCwiZXhwIjoxNjc0NTY3NDk4fQ.GlwWVVsFeofR-62IRv1bOwwqJMMitvX-mY3h1PM-RPI; Max-Age=86400; Path=/; Expires=Tue, 24 Jan 2023 13:38:18 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"expectedPickupTimestamp\": \"2023-03-11T11:28:07.713Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/accept/6402afe3bea90f0d11f7c58a",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"accept",
+										"6402afe3bea90f0d11f7c58a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadPickupImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Windows/Web/Wallpaper/Theme2/img8.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/pickup/6402afe3bea90f0d11f7c58a/uploadImages",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"pickup",
+										"6402afe3bea90f0d11f7c58a",
+										"uploadImages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePickupImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/pickup/6402afe3bea90f0d11f7c58a/deleteImage/640f71d503c0045b12724331",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"pickup",
+										"6402afe3bea90f0d11f7c58a",
+										"deleteImage",
+										"640f71d503c0045b12724331"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pickup",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2U4YmMwZjExNjhhYjBhYzM4YjBjYSIsImlhdCI6MTY3NDQ4MTA5OCwiZXhwIjoxNjc0NTY3NDk4fQ.GlwWVVsFeofR-62IRv1bOwwqJMMitvX-mY3h1PM-RPI; Max-Age=86400; Path=/; Expires=Tue, 24 Jan 2023 13:38:18 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"notes\": \"notes\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/pickup/6402afe3bea90f0d11f7c58a",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"pickup",
+										"6402afe3bea90f0d11f7c58a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "validatePickupCode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2U4YmMwZjExNjhhYjBhYzM4YjBjYSIsImlhdCI6MTY3NDQ4MTA5OCwiZXhwIjoxNjc0NTY3NDk4fQ.GlwWVVsFeofR-62IRv1bOwwqJMMitvX-mY3h1PM-RPI; Max-Age=86400; Path=/; Expires=Tue, 24 Jan 2023 13:38:18 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"pickupCode\": \"NTJUQSFHJF\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/validatePickupCode/6402afe3bea90f0d11f7c58a",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"validatePickupCode",
+										"6402afe3bea90f0d11f7c58a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reject",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2U4YmMwZjExNjhhYjBhYzM4YjBjYSIsImlhdCI6MTY3NDQ4MTA5OCwiZXhwIjoxNjc0NTY3NDk4fQ.GlwWVVsFeofR-62IRv1bOwwqJMMitvX-mY3h1PM-RPI; Max-Age=86400; Path=/; Expires=Tue, 24 Jan 2023 13:38:18 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/reject/6402afe3bea90f0d11f7c58a",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"reject",
+										"6402afe3bea90f0d11f7c58a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "start",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2U4YmMwZjExNjhhYjBhYzM4YjBjYSIsImlhdCI6MTY3NDQ4MTA5OCwiZXhwIjoxNjc0NTY3NDk4fQ.GlwWVVsFeofR-62IRv1bOwwqJMMitvX-mY3h1PM-RPI; Max-Age=86400; Path=/; Expires=Tue, 24 Jan 2023 13:38:18 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/start/6402afe3bea90f0d11f7c58a",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"start",
+										"6402afe3bea90f0d11f7c58a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delivered",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2U4YmMwZjExNjhhYjBhYzM4YjBjYSIsImlhdCI6MTY3NDQ4MTA5OCwiZXhwIjoxNjc0NTY3NDk4fQ.GlwWVVsFeofR-62IRv1bOwwqJMMitvX-mY3h1PM-RPI; Max-Age=86400; Path=/; Expires=Tue, 24 Jan 2023 13:38:18 GMT; HttpOnly; Secure; SameSite=None",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"notes\": \"I have delivered your shipment\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/delivered/6402afe3bea90f0d11f7c58a",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"delivered",
+										"6402afe3bea90f0d11f7c58a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadDeliveredImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Windows/Web/Wallpaper/Theme2/img7.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/delivered/6409f4e26476aee1d26e7b0b/uploadImages",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"delivered",
+										"6409f4e26476aee1d26e7b0b",
+										"uploadImages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "saveCurrentLocation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"latitude\": \"36.73152222\",\r\n    \"longitude\": \"-119.790964\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/currentLocation/63e3ec846e2cc28ed6821240",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"currentLocation",
+										"63e3ec846e2cc28ed6821240"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteDeliveredImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/delivered/6402afe3bea90f0d11f7c58a/deleteImage/640f589680227f7f82baf214",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"delivered",
+										"6402afe3bea90f0d11f7c58a",
+										"deleteImage",
+										"640f589680227f7f82baf214"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/list",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "locationHistory",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/locationHistory/6402a6bb97008e659c4c2643",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"locationHistory",
+										"6402a6bb97008e659c4c2643"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "currentLocation",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/currentLocation/6402a6bb97008e659c4c2643",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"currentLocation",
+										"6402a6bb97008e659c4c2643"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "quotes",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/6402a6bb97008e659c4c2643/quotes/11",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"6402a6bb97008e659c4c2643",
+										"quotes",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressFrom\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressTo\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"addressReturn\": \"63d1dddc5a690786d5bcc2de\",\r\n    \"packages\":[\"63d1e1c3e75d50982773ba86\"],\r\n    \"shipmentType\": \"63d1e670b759800887d31de0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/6402a6bb97008e659c4c2643",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"6402a6bb97008e659c4c2643"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "activeShipment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/activeShipments?page=1&limit=10",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"activeShipments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dispatchedShipment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/shipment/dispatchedList?latitude=36.735088&longitude=-119.42428",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"shipment",
+										"dispatchedList"
+									],
+									"query": [
+										{
+											"key": "latitude",
+											"value": "36.735088"
+										},
+										{
+											"key": "longitude",
+											"value": "-119.42428"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vehicle",
+					"item": [
+						{
+							"name": "createVehicle",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"make\": \"land\",\r\n    \"model\": \"rover\",\r\n    \"year\": 2020,\r\n    \"color\": \"black\",\r\n    \"doors\": \"four\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/vehicle/create",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"vehicle",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSingleVehicle",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/vehicle",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"vehicle"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateVehicle",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"make\": \"Land\",\r\n    \"model\": \"Cruiser\",\r\n    \"year\": \"2020\",\r\n    \"color\": \"black\",\r\n    \"doors\": \"four\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/vehicle/update",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"vehicle",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Windows/Web/Wallpaper/Theme2/img8.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/vehicle/uploadImage",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"vehicle",
+										"uploadImage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteImage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/vehicle/deleteImage/640f4774d1358397db5b1aad",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"vehicle",
+										"deleteImage",
+										"640f4774d1358397db5b1aad"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Address",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"street1\": \"East Belmont Avenue\",\r\n    \"street2\": \"5684\",\r\n    \"city\": \"Fresno\",\r\n    \"zip\": \"93727\",\r\n    \"state\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"isResidential\": true,\r\n    \"validate\": true,\r\n    \"longitude\": -119.852428,\r\n    \"latitude\": 36.735088\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/address/create",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"address",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/address/64029de3de0a4c7be594932b",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"address",
+										"64029de3de0a4c7be594932b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAll",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/address/list?page=1&limit=10",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"address",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "editAddresss",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"additionalInfo\": \"additionalInfo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/address/edit/64029de3de0a4c7be594932b",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"address",
+										"edit",
+										"64029de3de0a4c7be594932b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "validate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"additionalInfo\": \"additionalInfo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/address/64029de3de0a4c7be594932b/validate",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"address",
+										"64029de3de0a4c7be594932b",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Chat",
+					"item": [
+						{
+							"name": "saveChat",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"shipmentId\": \"63e55899328eac2ac2ceeb22\",\r\n    \"recipientType\": \"shipper\",\r\n    \"message\": \"hello how are you?\",\r\n    \"channel\": \"63e55899328eac2ac2ceeb22_driver\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/chat/save",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"chat",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getChatHistory",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authTokenForShipper}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"shipmentId\": \"63e55899328eac2ac2ceeb22\",\r\n    \"recipientType\": \"support\",\r\n    \"message\": \"hello how are you?\",\r\n    \"channel\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/v1/shipper/chat/list?page=1&limit=5&order=timestamp&channel=63e55899328eac2ac2ceeb22_driver",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shipper",
+										"chat",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "order",
+											"value": "timestamp"
+										},
+										{
+											"key": "channel",
+											"value": "63e55899328eac2ac2ceeb22_driver"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "HealthCheck",
+			"item": [
+				{
+					"name": "HeathCheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/api/v1/health_check",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"health_check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

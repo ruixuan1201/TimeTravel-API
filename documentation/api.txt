@@ -1,0 +1,161 @@
+# API Workflow #
+
+## Screen - Generate OTP 
+  - Endpoint
+    /api/v1/auth/login/otp
+  - Type
+    POST
+  - Body
+    {
+      "phone": "+12345678901" // phone number
+    }
+  - Response
+    {
+      id: "6391a7fd8ca6946b96234a8e" // phone confirm id
+    }
+
+## Screen - Verify OTP for Login
+  - Endpoint
+    /api/v1/auth/login/verify
+  - Type
+    POST
+  - Body
+    {
+      "otp": "112233", // otp code
+      "id": "6391a7fd8ca6946b96234a8e" // phone confirm id from '/api/v1/auth/phone'
+    }
+  - Response
+    if user is exist:
+    {
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTFhODc2OGNhNjk0NmI5NjIzNGE5MSIsImlhdCI6MTY3MDYxODM1OCwiZXhwIjoxNjcwNjE4OTU4fQ.GpXvBX7rhyhCRb2RP622SqI0sDmwJqWwm5R4E1te_78"
+    }
+    if user is not exist:
+    {
+    "id": "63b695b1a281cc47f185685f",   // user id
+    "isNewUser": true
+    }
+
+## Screen - Login with Register
+  - Endpoint
+    /api/v1/auth/login/register
+  - Type
+    POST
+  - Body
+    {
+      "id":"6391a8768ca6946b96234a91", // user id from '/api/v1/auth/phone/confirm'
+      "email": "sergej@kilwar.com", // email
+      "firstName": "Sergej", // first name
+      "lastName": "Melihov", // last name
+      "terms": {
+        "termsAccepted": true,
+        "acceptedSmsCommunication": true,
+      }
+  }
+  - Response
+    {
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTFhODc2OGNhNjk0NmI5NjIzNGE5MSIsImlhdCI6MTY3MDYxODM1OCwiZXhwIjoxNjcwNjE4OTU4fQ.GpXvBX7rhyhCRb2RP622SqI0sDmwJqWwm5R4E1te_78"
+    }
+
+## Screen - My Shipments
+  - Endpoint
+    /api/v1/shipment/list?page=1&limit=10 // page: page number, limit: shipments per page
+  - Type
+    GET
+  - Header
+    Bearer Token // auth token from log in api
+  - Response
+    {
+      "shipment": [
+        {
+          "_id": "63923c8db12936579dbb0124",
+          "addressFrom": null,
+          "addressTo": null,
+          "addressReturn": null,
+          "packages": [],
+          "status": "PENDING",
+          "quotes": [],
+          "additionalInfo": "asdfsadf",
+          "customerId": {
+            "_id": "63923b28b12936579dbb0117",
+            "phone": "+17605151999",
+            "email": "sergej@kilwar.com",
+            "firstName": "Sergej",
+            "lastName": "Melihov"
+          },
+          "createdAt": "2022-12-08T19:35:41.116Z",
+          "updatedAt": "2022-12-08T19:35:41.116Z"
+        }
+      ],
+      "totalDocs": 1,
+      "limit": 10,
+      "totalPages": 1,
+      "page": 1,
+      "pagingCounter": 1,
+      "hasPrevPage": false,
+      "hasNextPage": false,
+      "prevPage": null,
+      "nextPage": null
+    }
+
+## Screen - Create Shipment - Select Type
+  - Endpoint
+    /api/v1/shipment_type/list
+  - Type
+    GET
+  - Header
+    Bearer Token // auth token from log in api
+  - Response
+    {
+      "shipmentTypes": [
+        {
+          "_id": "639243898c582ad3203a018f",
+          "shipmentCode": "ECONOMY",
+          "shipmentDescription": "description"
+        }
+      ]
+    }
+
+## Screen - Review Shipment
+  - Endpoint
+    /api/v1/shipment/create
+  - Type
+    POST
+  - Header
+    Bearer Token // auth token from log in api
+  - Body
+    {
+      "addressFrom": "6384402be625a83d49e4086b",
+      "addressTo": "6384402be625a83d49e4086b",
+      "addressReturn": "6384402be625a83d49e4086b",
+      "packages": [
+        "638463817d1cd182c8ccddbc"
+      ],
+      "status": "PENDING",
+      "quotes": [
+        "6384c874ee6c702340874a3d"
+      ],
+      "additionalInfo": "asdfsadf",
+      "shipmentType": "639243898c582ad3203a018f"
+    }
+  - Response
+    {
+      "shipment": {
+        "addressFrom": "6384402be625a83d49e4086b",
+        "addressTo": "6384402be625a83d49e4086b",
+        "addressReturn": "6384402be625a83d49e4086b",
+        "packages": [
+          "638463817d1cd182c8ccddbc"
+        ],
+        "status": "PENDING",
+        "quotes": [
+          "6384c874ee6c702340874a3d"
+        ],
+        "additionalInfo": "asdfsadf",
+        "customerId": "63923b28b12936579dbb0117",
+        "shipmentType": "639243898c582ad3203a018f",
+        "_id": "63924572cc3fde464bb9d489",
+        "createdAt": "2022-12-08T20:13:38.123Z",
+        "updatedAt": "2022-12-08T20:13:38.123Z",
+        "__v": 0
+      }
+    }
